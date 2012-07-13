@@ -1,5 +1,16 @@
 <?php 
 
+# The class provides two public methods:
+#   - submitData ( array @order, array @options )
+#     return array of form parameters along with signature
+#   - verifyReceivedSignature (array @request)
+#     verifies if signature_v2 of request is valid
+#     return: true or false
+#
+#  Copyright 2012 Failsafe Payments admin@failsafepayments.com
+#
+#  License: OSL 3.0
+
 class CertoPay {
   protected $_shop_id;
   protected $_secret_key;

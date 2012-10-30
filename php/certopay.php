@@ -93,6 +93,12 @@ class CertoPay {
     $result = array ();
     foreach ($request as $key => $value) {
       if ($key == 'signature_v2') continue;
+      if ( $key == 'tracking_params' ) {
+              foreach ( $request[$key] as $k => $v ) {
+                      if (is_array($request[$key][$k])) $result = array_merge_recursive($result,$this->processRequest($request[$key][$k]));
+              }
+              continue;
+      }
       if (is_array($request[$key])) { $result = array_merge_recursive($result,$this->processRequest($request[$key])); }
       else {
         $result[] = $key.$value;
